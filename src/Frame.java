@@ -44,13 +44,11 @@ public class Frame extends JFrame {
 	}
 
 	public void setTable() {
-
 		tableModel_tableContent = new DefaultTableModel(data, headers);
 
 		table_content.setModel(tableModel_tableContent);
 		table_content.setAutoCreateRowSorter(true);
 		getContentPane().add(scrollPane_content);
-
 	}
 
 	public Frame getFrame() {
