@@ -14,7 +14,6 @@ import jxl.Workbook;
 public class Controller {
 
 	private Frame frame;
-	private String fileName = "";
 
 	public Frame getFrame() {
 		return frame;
@@ -42,7 +41,6 @@ public class Controller {
 
 	public void chooseFile() {
 		// Open the GUI to choose a file from the system
-		JFileChooser fileChooser = new JFileChooser();
 		int returnValue = frame.getFileChooser().showOpenDialog(null);
 		// If the user presses the 'Okey' button
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -62,20 +60,21 @@ public class Controller {
 			Workbook workbook = Workbook.getWorkbook(file);
 			// Get the sheet in the workbook, on position 0
 			Sheet sheet = workbook.getSheet(0);
-			
+
 			// Clear header in table in frame
 			frame.getHeaders().clear();
-			
+
 			// Add a cell value as header for every column in the sheet
 			for (int i = 0; i < sheet.getColumns(); i++) {
 				Cell cell1 = sheet.getCell(i, 0);
 				frame.getHeaders().add(cell1.getContents());
 			}
-			
-			// Clear the data in table 
+
+			// Clear the data in table
 			frame.getData().clear();
-			
-			// Get all data from one column, then go on to get all the data from the next column. Keep going until all column data have been gathered. 
+
+			// Get all data from one column, then go on to get all the data from the next
+			// column. Keep going until all column data have been gathered.
 			for (int j = 1; j < sheet.getRows(); j++) {
 				Vector data = new Vector();
 				for (int i = 0; i < sheet.getColumns(); i++) {
@@ -83,11 +82,12 @@ public class Controller {
 					// Store the column data in variable data
 					data.add(cell.getContents());
 				}
-				// Add line space and then add the data to the data later to be displayed in frame
+				// Add line space and then add the data to the data later to be displayed in
+				// frame
 				data.add("\n");
 				frame.getData().add(data);
 			}
-			
+
 			// Call the setData in frame to display all the data
 			frame.setTable();
 		} catch (Exception e) {
