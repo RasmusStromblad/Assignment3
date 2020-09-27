@@ -32,6 +32,7 @@ public class Controller {
 
 	public void declareEvents() {
 
+		// When user presses the import file button
 		frame.getBtn_import().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				chooseFile();
@@ -58,7 +59,7 @@ public class Controller {
 		try {
 			// Get the workbook of the file
 			Workbook workbook = Workbook.getWorkbook(file);
-			// Get the sheet in the workbook, on position 0
+			// Get the sheet in the workbook on position 0
 			Sheet sheet = workbook.getSheet(0);
 
 			// Clear header in table in frame
