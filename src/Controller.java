@@ -40,42 +40,55 @@ public class Controller {
 		});
 	}
 
-	public File chooseFile() {
+	public void chooseFile() {
+		// Open the GUI to choose a file from the system
 		JFileChooser fileChooser = new JFileChooser();
 		int returnValue = frame.getFileChooser().showOpenDialog(null);
+		// If the user presses the 'Okey' button
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			// Set the selected file to the file selected from the window
 			File selectedFile = frame.getFileChooser().getSelectedFile();
+			// Call setFile with the selected file as parameter
 			setFile(selectedFile);
-			return selectedFile;
 		}
-		return null;
 	}
 
 	public void setFile(File selectedFile) {
+		// Get the file path of the selected file
 		File file = new File(selectedFile.getAbsolutePath());
 
 		try {
+			// Get the workbook of the file
 			Workbook workbook = Workbook.getWorkbook(file);
+			// Get the sheet in the workbook, on position 0
 			Sheet sheet = workbook.getSheet(0);
-			frame.getHeaders().clear();
-		
 			
+			// Clear header in table in frame
+			frame.getHeaders().clear();
+			
+			// Add a cell value as header for every column in the sheet
 			for (int i = 0; i < sheet.getColumns(); i++) {
 				Cell cell1 = sheet.getCell(i, 0);
 				frame.getHeaders().add(cell1.getContents());
 			}
 			
+			// Clear the data in table 
 			frame.getData().clear();
+			
+			// Get all data from one column, then go on to get all the data from the next column. Keep going until all column data have been gathered. 
 			for (int j = 1; j < sheet.getRows(); j++) {
-				Vector d = new Vector();
+				Vector data = new Vector();
 				for (int i = 0; i < sheet.getColumns(); i++) {
 					Cell cell = sheet.getCell(i, j);
-					d.add(cell.getContents());
+					// Store the column data in variable data
+					data.add(cell.getContents());
 				}
-				d.add("\n");
-				frame.getData().add(d);
+				// Add line space and then add the data to the data later to be displayed in frame
+				data.add("\n");
+				frame.getData().add(data);
 			}
 			
+			// Call the setData in frame to display all the data
 			frame.setTable();
 		} catch (Exception e) {
 			frame.getLbl_response().setText("Wrong format of imported file. Legal file format: .xls");

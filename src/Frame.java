@@ -6,9 +6,7 @@ import javax.swing.table.*;
 
 public class Frame extends JFrame {
 
-	static String keep = "";
-	static File file;
-
+	// Declare all variables
 	private Frame frame;
 	private Vector headers;
 	private Vector data;
@@ -20,6 +18,7 @@ public class Frame extends JFrame {
 	private JLabel lbl_response;
 
 	public Frame() {
+		// Initilize all components
 		getContentPane().setLayout(null);
 
 		btn_import = new JButton("Import file");
@@ -32,7 +31,7 @@ public class Frame extends JFrame {
 
 		table_content = new JTable();
 		scrollPane_content.setViewportView(table_content);
-		
+
 		lbl_response = new JLabel("");
 		lbl_response.setBounds(148, 554, 531, 14);
 		getContentPane().add(lbl_response);
@@ -43,6 +42,7 @@ public class Frame extends JFrame {
 
 	}
 
+	// Set table to display data from excel file in table
 	public void setTable() {
 		tableModel_tableContent = new DefaultTableModel(data, headers);
 
@@ -51,6 +51,7 @@ public class Frame extends JFrame {
 		getContentPane().add(scrollPane_content);
 	}
 
+	// Get and set methods for all private variables
 	public Frame getFrame() {
 		return frame;
 	}
@@ -81,22 +82,6 @@ public class Frame extends JFrame {
 
 	public void setTableModel_tableContent(DefaultTableModel tableModel_tableContent) {
 		this.tableModel_tableContent = tableModel_tableContent;
-	}
-
-	public static String getKeep() {
-		return keep;
-	}
-
-	public static void setKeep(String keep) {
-		Frame.keep = keep;
-	}
-
-	public static void setFile(File file) {
-		Frame.file = file;
-	}
-
-	public static File getFile() {
-		return file;
 	}
 
 	public Vector getHeaders() {
@@ -138,6 +123,5 @@ public class Frame extends JFrame {
 	public void setLbl_response(JLabel lbl_response) {
 		this.lbl_response = lbl_response;
 	}
-	
-	
+
 }
