@@ -27,7 +27,6 @@ public class Controller {
 		this.frame = frame;
 
 		declareEvents();
-
 	}
 
 	public void declareEvents() {
