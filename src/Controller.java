@@ -35,9 +35,7 @@ public class Controller {
 
 		frame.getBtn_import().addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Hej");
 				chooseFile();
-				
 			}
 		});
 	}
@@ -67,7 +65,7 @@ public class Controller {
 			}
 			frame.setTable();
 		} catch (Exception e) {
-			e.printStackTrace();
+			frame.getLbl_response().setText("Wrong format of imported file. Legal file format: .xls");
 		}
 	}
 

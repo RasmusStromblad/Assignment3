@@ -17,6 +17,7 @@ public class Frame extends JFrame {
 	private JTable table_content;
 	private JScrollPane scrollPane_content;
 	private DefaultTableModel tableModel_tableContent;
+	private JLabel lbl_response;
 
 	public Frame() {
 		getContentPane().setLayout(null);
@@ -31,6 +32,10 @@ public class Frame extends JFrame {
 
 		table_content = new JTable();
 		scrollPane_content.setViewportView(table_content);
+		
+		lbl_response = new JLabel("");
+		lbl_response.setBounds(148, 554, 531, 14);
+		getContentPane().add(lbl_response);
 
 		headers = new Vector();
 		data = new Vector();
@@ -128,4 +133,13 @@ public class Frame extends JFrame {
 		this.fileChooser = fileChooser;
 	}
 
+	public JLabel getLbl_response() {
+		return lbl_response;
+	}
+
+	public void setLbl_response(JLabel lbl_response) {
+		this.lbl_response = lbl_response;
+	}
+	
+	
 }
