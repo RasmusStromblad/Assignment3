@@ -94,5 +94,6 @@ public class Controller {
 			frame.getLbl_response().setText("Wrong format of imported file. Legal file format: .xls");
 		}
 	}
+	
 
 }
