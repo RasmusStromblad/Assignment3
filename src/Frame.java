@@ -44,8 +44,10 @@ public class Frame extends JFrame {
 
 	// Set table to display data from excel file in table
 	public void setTable() {
+		// Create table model to contain our values from data and headers
 		tableModel_tableContent = new DefaultTableModel(data, headers);
-
+		
+		// Add the model to the table
 		table_content.setModel(tableModel_tableContent);
 		table_content.setAutoCreateRowSorter(true);
 		getContentPane().add(scrollPane_content);
